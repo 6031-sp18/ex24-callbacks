@@ -86,6 +86,9 @@ public class Counter {
 
     // Call all listeners to notify them about a new number
     private void callListeners() {
+        // iterate over a copy of listeners so that we are re-entrant
+        // (i.e. a listener may call add/removeNumberListener,
+        // which would mutate the set in the midst of iteration)
         for (NumberListener listener : new HashSet<>(listeners)) {
             listener.numberReached(number);
         }
