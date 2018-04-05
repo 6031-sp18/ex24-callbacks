@@ -7,14 +7,10 @@ import java.util.Set;
 /** A mutable incrementing counter that calls its listeners each time it reaches a new number. */
 public class Counter {
 
-    /**
-     * A listener for this counter.
-     */
+    /** A listener for this counter. */
     public interface NumberListener {
-        /**
-         * Called when the counter reaches a number matching the listener's regex.
-         * @param number the number that matched
-         */
+        /** Called when the counter increments.
+          * @param number the new number */
         public void numberReached(BigInteger number); 
     }
 
@@ -26,7 +22,7 @@ public class Counter {
         Counter counter = new Counter();
 
         // listen for prime numbers
-        counter.addNumberListener((number) -> {
+        counter.addNumberListener(number -> {
             if (number.isProbablePrime(100)) {
                 System.out.println(number + " prime");
             }
